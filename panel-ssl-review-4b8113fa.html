@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯介绍 · 稳定信息页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f7f9fb;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #1e2a3a;
+            line-height: 1.7;
+            padding: 0 1rem;
+        }
+
+        .page {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 2rem 0 3.5rem;
+        }
+
+        /* 导航区 —— 极简留白 */
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 0 0.8rem;
+            border-bottom: 1px solid #dce3ec;
+        }
+
+        .top-nav .logo {
+            font-weight: 500;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            color: #1e2a3a;
+        }
+
+        .top-nav .logo span {
+            color: #d4380d;
+            font-weight: 600;
+        }
+
+        .top-nav .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            font-size: 0.95rem;
+        }
+
+        .top-nav .nav-links a {
+            color: #3a4b5e;
+            text-decoration: none;
+            transition: color 0.2s ease;
+            padding-bottom: 0.25rem;
+            border-bottom: 2px solid transparent;
+        }
+
+        .top-nav .nav-links a:hover {
+            color: #d4380d;
+            border-bottom-color: #d4380d;
+        }
+
+        /* hero 简洁介绍 */
+        .hero {
+            margin: 3.2rem 0 2.8rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0f1a2b;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: #3c4d62;
+            max-width: 620px;
+        }
+
+        .hero p a {
+            color: #d4380d;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1.5px;
+        }
+
+        .hero p a:hover {
+            background-color: #fce9e2;
+            text-decoration: none;
+            padding: 0 0.2rem;
+            border-radius: 2px;
+        }
+
+        /* 标题层级 */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 550;
+            margin: 2.5rem 0 1rem;
+            letter-spacing: -0.01em;
+            color: #1c2b3c;
+            border-left: 5px solid #d4380d;
+            padding-left: 1rem;
+        }
+
+        .sub-label {
+            display: inline-block;
+            margin-bottom: 0.2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #6a7e93;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* 三个场景模块 — 卡片风格 */
+        .scene-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin: 1.8rem 0 2rem;
+        }
+
+        .scene-card {
+            flex: 1 1 200px;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.5rem 1.2rem 1.2rem;
+            box-shadow: 0 4px 14px rgba(0, 20, 30, 0.04);
+            transition: box-shadow 0.15s ease, transform 0.1s;
+            border: 1px solid #eef2f6;
+        }
+
+        .scene-card:hover {
+            box-shadow: 0 6px 20px rgba(0, 20, 30, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .scene-card h3 {
+            font-size: 1.15rem;
+            font-weight: 550;
+            margin-bottom: 0.6rem;
+            color: #1f3142;
+        }
+
+        .scene-card p {
+            font-size: 0.95rem;
+            color: #44596e;
+            line-height: 1.6;
+        }
+
+        .scene-card .card-icon {
+            display: inline-block;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: #d4380d;
+        }
+
+        /* 常见说明 / FAQ 摘要 */
+        .faq-block {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            margin: 2.5rem 0 2rem;
+            border: 1px solid #e6edf4;
+        }
+
+        .faq-item {
+            margin-bottom: 1.4rem;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-question {
+            font-weight: 550;
+            font-size: 1.05rem;
+            margin-bottom: 0.25rem;
+            color: #1f2f40;
+        }
+
+        .faq-answer {
+            font-size: 0.95rem;
+            color: #40566d;
+            padding-left: 0.3rem;
+            border-left: 2px solid #dce3ec;
+            padding-left: 1rem;
+        }
+
+        .faq-answer a {
+            color: #d4380d;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .faq-answer a:hover {
+            background-color: #fce9e2;
+            text-decoration: none;
+        }
+
+        /* 底部提示 */
+        .footnote {
+            margin: 2.8rem 0 1rem;
+            font-size: 0.85rem;
+            color: #5d7288;
+            border-top: 1px solid #dce3ec;
+            padding-top: 1.5rem;
+            text-align: left;
+            letter-spacing: 0.02em;
+        }
+
+        .footnote a {
+            color: #3a4b5e;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .footnote a:hover {
+            color: #d4380d;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 600px) {
+            .top-nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .top-nav .nav-links {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+
+            .faq-block {
+                padding: 1.4rem 1.2rem;
+            }
+
+            .scene-card {
+                flex: 1 1 100%;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .page {
+                padding: 1rem 0 2.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- 顶部导航 -->
+        <nav class="top-nav">
+            <div class="logo"><span>⦿</span> 界碑</div>
+            <div class="nav-links">
+                <a href="#intro">介绍</a>
+                <a href="#scenes">场景</a>
+                <a href="#faq">说明</a>
+                <a href="#more">更多</a>
+            </div>
+        </nav>
+
+        <!-- hero 区域：核心介绍，自然嵌入链接 -->
+        <div class="hero" id="intro">
+            <h1>世界杯 · 轻量信息页</h1>
+            <p>
+                这里是关于 <a href="https://panel-ssl-shijiebei.com">世界杯</a> 的稳定介绍页面。
+                我们尝试用平实的语言，梳理与这项赛事相关的常见场景和基础信息，
+                帮助新朋友快速建立认知轮廓，同时也为长期关注者提供一个安静的参照页。
+            </p>
+        </div>
+
+        <!-- 三个场景模块 -->
+        <h2 class="section-title" id="scenes">常见使用场景</h2>
+        <div class="scene-grid">
+            <div class="scene-card">
+                <div class="card-icon">🏟️</div>
+                <h3>赛事信息回顾</h3>
+                <p>无论赛程、分组还是历史经典对决，许多爱好者习惯在闲暇时查阅世界杯相关资料。本页可作为出发点，再结合官方数据深入探索。</p>
+            </div>
+            <div class="scene-card">
+                <div class="card-icon">🗂️</div>
+                <h3>活动与交流</h3>
+                <p>线下观赛、社区讨论或主题分享会，参与者常常需要一个简洁的公共页面来确认信息背景。轻量的导航结构让沟通更直接。</p>
+            </div>
+            <div class="scene-card">
+                <div class="card-icon">🌐</div>
+                <h3>多平台入口统一</h3>
+                <p>不少用户会在不同设备上访问世界杯相关内容，一个稳定、界面干净的页面有利于统一收藏或作为浏览器主页的启动点。</p>
+            </div>
+        </div>
+
+        <!-- 常见说明 (FAQ 摘要) -->
+        <div class="faq-block" id="faq">
+            <h3 class="sub-label">常见说明 · 摘要</h3>
+            <div class="faq-item">
+                <div class="faq-question">这个页面是关于什么的？</div>
+                <div class="faq-answer">
+                    一个以 <a href="https://panel-ssl-shijiebei.com">世界杯</a> 为主题的信息导航页，强调简洁与稳定。页面不收集个人数据，也不做任何形式的诱导。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">如何判断信息是否更新？</div>
+                <div class="faq-answer">
+                    本页内容偏向静态介绍，不实时追踪赛果。建议搭配官方渠道获取最新赛程与结果。链接指向的地址为长期维护的入口。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">可以在其他页面引用此介绍吗？</div>
+                <div class="faq-answer">
+                    当然可以。本页面采用开放结构，适合作为参考链接或“关于本站”的补充。引用时保留原始链接即可。
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部提示 / 温和收尾 -->
+        <div class="footnote" id="more">
+            <p>— 保持浏览的从容。世界杯本身承载了很多记忆与期待，这里只是一个安静的索引角落。</p>
+            <p style="margin-top: 0.8rem;">
+                如果你需要直接访问，这是对应的链接：<a href="https://panel-ssl-shijiebei.com">世界杯</a>。
+                祝观赛愉快，也欢迎在社区里分享你的看法。
+            </p>
+        </div>
+    </div>
+</body>
+</html>
